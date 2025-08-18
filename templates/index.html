@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #0a74da;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .note {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border-left: 5px solid #0a74da;
+            border-radius: 5px;
+        }
+
+        .note em {
+            font-size: 0.8em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Notes App</h1>
+        <form method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <br>
+            <textarea name="note" placeholder="Your Note" required></textarea>
+            <br>
+            <button type="submit">Add Note</button>
+        </form>
+
+        <hr>
+
+        {% for note in notes %}
+            <div class="note">
+                <p><strong>{{ note.Name }}</strong></p>
+                <p>📌 {{ note.Content }}</p>
+                <p>🕒 <em>{{ note.Date }}</em></p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
