@@ -15,7 +15,7 @@ DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
 
 engine = create_engine(DATABASE_URL, pool_pre_ping=True, future=True)
 
-# نجهز الجدول
+
 def init_db():
     while True:
         try:
@@ -30,7 +30,7 @@ def init_db():
                 """))
             break
         except Exception as e:
-            print("⏳ Waiting for DB...", e)
+            print("Waiting for DB", e)
             time.sleep(3)
 
 @app.route("/", methods=["GET", "POST"])
